@@ -25,6 +25,21 @@
     <p id="result"></p>
 
     <script>
+        function currency_converter(amount, from_currency, to_currency) {
+        // Your code for the currency_converter function goes here
+        // Use the 'requests' library to fetch the current exchange rate
+        import requests
+        url = f'https://api.frankfurter.app/latest?amount={amount}&from={from_currency}&to={to_currency}'
+        res = requests.get(url)
+        data = res.json()
+        exchange_rate = data['rates'][to_currency]
+
+        // Multiply the amount by the exchange rate to get the converted amount
+        converted_amount = amount * exchange_rate
+
+        return converted_amount
+        }
+        
       function convert() {
         // Get the amount and currencies from the form
         var amount = document.getElementById("amount").value;
