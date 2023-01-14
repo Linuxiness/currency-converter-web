@@ -3,7 +3,7 @@ import requests
 
 def currency_converter(amount, from_currency, to_currency):
     # Use the 'requests' library to fetch the current exchange rate
-    url = f'https://api.exchangerate-api.com/v4/latest/{from_currency}'
+    url = f'https://api.frankfurter.app/latest?amount={amount}&from={from_currency}&to={to_currency}'
     res = requests.get(url)
     data = res.json()
     exchange_rate = data['rates'][to_currency]
